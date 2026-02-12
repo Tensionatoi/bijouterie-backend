@@ -16,6 +16,19 @@ module.exports = defineConfig({
   },
   modules: [
     {
+      resolve: "@medusajs/file-s3",
+      key: "file",
+      options: {
+        file_url: process.env.MINIO_public_URL,
+        access_key_id: process.env.MINIO_ACCESS_KEY,
+        secret_access_key: process.env.MINIO_SECRET_KEY,
+        region: "us-east-1",
+        bucket: process.env.MINIO_BUCKET,
+        endpoint: process.env.MINIO_ENDPOINT,
+        authentication_method: "s3-v4",
+      },
+    },
+    {
       resolve: "@medusajs/event-bus-redis",
       key: "eventBus",
       options: {
