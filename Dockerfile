@@ -22,5 +22,6 @@ RUN mkdir -p public/admin && cp -r .medusa/server/public/admin/* public/admin/ |
 # NO extra COPY after build - this is the key fix vs Nixpacks
 
 EXPOSE 9000
+ENV HOST=0.0.0.0
 
 CMD ["npx", "medusa", "start"]
