@@ -16,16 +16,25 @@ module.exports = defineConfig({
   },
   modules: [
     {
-      resolve: "@medusajs/file-s3",
-      key: "file",
+      resolve: "@medusajs/medusa/file",
       options: {
-        file_url: process.env.MINIO_PUBLIC_URL,
-        access_key_id: process.env.MINIO_ACCESS_KEY,
-        secret_access_key: process.env.MINIO_SECRET_KEY,
-        region: "us-east-1",
-        bucket: process.env.MINIO_BUCKET,
-        endpoint: process.env.MINIO_ENDPOINT,
-        authentication_method: "s3-v4",
+        providers: [
+          {
+            resolve: "@medusajs/medusa/file-s3",
+            id: "s3",
+            options: {
+              file_url: process.env.MINIO_PUBLIC_URL,
+              access_key_id: process.env.MINIO_ACCESS_KEY,
+              secret_access_key: process.env.MINIO_SECRET_KEY,
+              region: "us-east-1",
+              bucket: process.env.MINIO_BUCKET,
+              endpoint: process.env.MINIO_ENDPOINT,
+              additional_client_config: {
+                forcePathStyle: true,
+              },
+            },
+          },
+        ],
       },
     },
     {
