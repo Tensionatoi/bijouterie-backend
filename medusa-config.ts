@@ -17,12 +17,14 @@ module.exports = defineConfig({
   modules: [
     {
       resolve: "@medusajs/event-bus-redis",
+      key: "eventBus",
       options: {
         redisUrl: process.env.REDIS_URL,
       },
     },
     {
       resolve: "@medusajs/cache-redis",
+      key: "cacheService",
       options: {
         redisUrl: process.env.REDIS_URL,
       },
