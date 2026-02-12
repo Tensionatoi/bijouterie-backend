@@ -13,10 +13,14 @@ RUN yarn install
 COPY . .
 
 # Build backend + admin panel
+ENV NODE_ENV=production
 RUN yarn run build
+
+# Workaround: Copy admin assets to potential fallback locations
+RUN mkdir -p public/admin && cp -r .medusa/server/public/admin/* public/admin/ || echo "Admin build not found to copy"
 
 # NO extra COPY after build - this is the key fix vs Nixpacks
 
 EXPOSE 9000
 
-CMD ["sh", "-c", "echo 'Listing .medusa directory:'; ls -R .medusa || echo '.medusa not found'; npx medusa start"]
+CMD ["npx", "medusa", "start"]
