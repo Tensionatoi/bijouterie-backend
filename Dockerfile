@@ -19,4 +19,4 @@ RUN yarn run build
 
 EXPOSE 9000
 
-CMD ["npx", "medusa", "start"]
+CMD ["sh", "-c", "echo 'Listing .medusa directory:'; ls -R .medusa || echo '.medusa not found'; npx medusa start"]
