@@ -19,7 +19,7 @@ module.exports = defineConfig({
       resolve: "@medusajs/file-s3",
       key: "file",
       options: {
-        file_url: process.env.MINIO_public_URL,
+        file_url: process.env.MINIO_PUBLIC_URL,
         access_key_id: process.env.MINIO_ACCESS_KEY,
         secret_access_key: process.env.MINIO_SECRET_KEY,
         region: "us-east-1",
